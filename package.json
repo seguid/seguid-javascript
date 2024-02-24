@@ -1,0 +1,20 @@
+{
+  "name": "seguid-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seguid/seguid-javascript.git"
+  },
+  "author": "Louis Abraham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seguid/seguid-javascript/issues"
+  },
+  "homepage": "https://github.com/seguid/seguid-javascript",
+  "dependencies": {
+    "argparse": "^2.0.1"
+  }
+}
