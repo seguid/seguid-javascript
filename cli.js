@@ -1,11 +1,3 @@
-// generate a js CLI
-// The cli takes 3 arguments
-// parser.add_argument("--alphabet", type=str, nargs="?", help="Type of input sequence")
-// parser.add_argument("--type", type=str, nargs="?", help="Type of checksum to calculate")
-// parser.add_argument("--short-form", help="computes a short form of the checksum", action="store_true")
-// and it reads from stdin
-
-// code stars here
 const { ArgumentParser } = require("argparse");
 const { lsseguid, ldseguid, csseguid, cdseguid } = require("./seguid");
 
