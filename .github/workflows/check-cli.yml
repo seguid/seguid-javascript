@@ -14,7 +14,8 @@ jobs:
       fail-fast: false
       
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+#        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         
 
     steps:
@@ -26,6 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         
+    - name: Install package
+      run: npx install
+
     - name: Session information
       run: npm --version
 
