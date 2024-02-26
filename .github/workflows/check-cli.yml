@@ -1,0 +1,34 @@
+on: [push, pull_request]
+
+name: "CLI check"
+
+jobs:
+  check:
+    if: "! contains(github.event.head_commit.message, '[ci skip]')"
+
+    timeout-minutes: 10
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Session information
+      run: npm --version
+
+    - name: Check CLI
+      if: runner.os != 'Windows'
+      run: make check-cli
