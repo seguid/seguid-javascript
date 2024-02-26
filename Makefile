@@ -18,6 +18,6 @@ seguid-tests:
 	git submodule update
 
 check-cli: seguid-tests install
-	$(MAKE) -C seguid-tests check-cli CLI_CALL="node $(CURDIR)/cli.js"
+	$(MAKE) -C seguid-tests check-cli CLI_CALL="npx seguid"
 
 .PHONY: seguid-tests

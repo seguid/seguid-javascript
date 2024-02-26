@@ -2,7 +2,9 @@
   "name": "seguid",
   "version": "1.0.0",
   "description": "",
-  "main": "cli.js",
+  "bin": {
+    "mycli": "./cli.js"
+  },
   "scripts": {},
   "repository": {
     "type": "git",
