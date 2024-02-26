@@ -4,7 +4,7 @@ const rotate = (s, n) => {
 
 const SEGUID = async (seq, urlsafe = false) => {
     const encoder = new TextEncoder();
-    const data = encoder.encode(seq.toUpperCase());
+    const data = encoder.encode(seq);
     try {
         const hashBuffer = await crypto.subtle.digest("SHA-1", data);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -135,14 +135,14 @@ const apply_form = (s, form) => {
 };
 
 const seguid = async (s, alphabet = "{DNA}", form = "long") => {
+    if (!check_set(s, alphabet)) {
+        throw new Error("Invalid sequence");
+    }
     const seguid = await SEGUID(s);
     return apply_form("seguid=" + seguid, form);
 };
 
 const lsseguid = async (s, alphabet = "{DNA}", form = "long") => {
-    if (s.length === 0) {
-        throw new Error("Invalid sequence");
-    }
     if (!check_set(s, alphabet)) {
         throw new Error("Invalid sequence");
     }
