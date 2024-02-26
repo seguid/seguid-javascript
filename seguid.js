@@ -121,20 +121,25 @@ const check_complementary = (watson, crick, alphabet) => {
     return true;
 };
 
-const apply_form = (s, short_form) => {
-    if (short_form) {
-        return s.split("=")[1].slice(0, 6);
-    } else {
+const apply_form = (s, form) => {
+    const short_form = s.split("=")[1].slice(0, 6);
+    if (form === "short") {
+        return short_form;
+    } else if (form === "long") {
         return s;
+    } else if (form === "both") {
+        return short_form + " " + s;
+    } else {
+        throw new Error("Invalid form " + form);
     }
 };
 
-const seguid = async (s, alphabet = "{DNA}", short_form = false) => {
+const seguid = async (s, alphabet = "{DNA}", form = "long") => {
     const seguid = await SEGUID(s);
-    return apply_form("seguid=" + seguid, short_form);
+    return apply_form("seguid=" + seguid, form);
 };
 
-const lsseguid = async (s, alphabet = "{DNA}", short_form = false) => {
+const lsseguid = async (s, alphabet = "{DNA}", form = "long") => {
     if (s.length === 0) {
         throw new Error("Invalid sequence");
     }
@@ -142,15 +147,10 @@ const lsseguid = async (s, alphabet = "{DNA}", short_form = false) => {
         throw new Error("Invalid sequence");
     }
     const seguid = await SEGUID(s, true);
-    return apply_form("lsseguid=" + seguid, short_form);
+    return apply_form("lsseguid=" + seguid, form);
 };
 
-const ldseguid = async (
-    watson,
-    crick,
-    alphabet = "{DNA}",
-    short_form = false
-) => {
+const ldseguid = async (watson, crick, alphabet = "{DNA}", form = "long") => {
     if (!check_complementary(watson, crick, alphabet)) {
         throw new Error("Invalid sequences");
     }
@@ -160,23 +160,18 @@ const ldseguid = async (
         spec = crick + ";" + watson;
     }
     const seguid = await SEGUID(spec, true);
-    return apply_form("ldseguid=" + seguid, short_form);
+    return apply_form("ldseguid=" + seguid, form);
 };
 
-const csseguid = async (s, alphabet = "{DNA}", short_form = false) => {
+const csseguid = async (s, alphabet = "{DNA}", form = "long") => {
     if (!check_set(s, alphabet)) {
         throw new Error("Invalid sequence");
     }
     const seguid = await SEGUID(minRotation(s), true);
-    return apply_form("csseguid=" + seguid, short_form);
+    return apply_form("csseguid=" + seguid, form);
 };
 
-const cdseguid = async (
-    watson,
-    crick,
-    alphabet = "{DNA}",
-    short_form = false
-) => {
+const cdseguid = async (watson, crick, alphabet = "{DNA}", form = "long") => {
     if (!check_complementary(watson, crick, alphabet)) {
         throw new Error("Invalid sequences");
     }
@@ -189,7 +184,7 @@ const cdseguid = async (
     }
 
     const seguid = await SEGUID(spec, true);
-    return apply_form("cdseguid=" + seguid, short_form);
+    return apply_form("cdseguid=" + seguid, form);
 };
 
 module.exports = {

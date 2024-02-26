@@ -1,12 +1,12 @@
 SHELL=bash
 
-all: install check check-cli
+all: check-cli
 
 
 #---------------------------------------------------------------
 # Install package
 #---------------------------------------------------------------
-install:
+install: seguid.js cli.js package.json
 	npm install
 
 
@@ -14,9 +14,10 @@ install:
 # Check CLI using 'seguid-tests' test suite
 #---------------------------------------------------------------
 seguid-tests:
-	git clone --depth=1 https://github.com/seguid/seguid-tests.git
+	git submodule init
+	git submodule update
 
 check-cli: seguid-tests install
-	export SEGUID_HOME="$${PWD}"; \
-	export NODE_PATH="$${SEGUID_HOME}/node_modules"; \
-	cd "$<" && git pull && make check-cli CLI_CALL="node $${SEGUID_HOME}/cli.js"
+	$(MAKE) -C seguid-tests check-cli CLI_CALL="node $(CURDIR)/cli.js"
+
+.PHONY: seguid-tests

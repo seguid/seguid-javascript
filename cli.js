@@ -15,9 +15,13 @@ parser.add_argument("--type", {
     default: "seguid",
     help: "Type of checksum to calculate",
 });
-parser.add_argument("--short-form", {
+parser.add_argument("--form", {
+    // can only be short or long
     help: "computes a short form of the checksum",
-    action: "store_true",
+    type: "str",
+    nargs: "?",
+    default: "long",
+    choices: ["short", "long", "both"],
 });
 parser.add_argument("--version", {
     action: "version",
@@ -26,7 +30,7 @@ parser.add_argument("--version", {
 
 const args = parser.parse_args();
 const alphabet = args.alphabet || "{DNA}";
-const short_form = args.short_form || false;
+const form = args.form;
 const type = args.type;
 const fun = {
     seguid: seguid,
@@ -45,7 +49,7 @@ process.stdin.on("end", async () => {
     try {
         data = data.replace(/\n$/, "");
         if (type === "seguid" || type === "lsseguid" || type === "csseguid") {
-            console.log(await fun(data, alphabet, short_form));
+            console.log(await fun(data, alphabet, form));
         }
         if (type === "ldseguid" || type === "cdseguid") {
             if (data.includes(";")) {
@@ -53,7 +57,7 @@ process.stdin.on("end", async () => {
             } else if (data.includes("\n")) {
                 [watson, crick] = data.split("\n");
             }
-            console.log(await fun(watson, crick, alphabet, short_form));
+            console.log(await fun(watson, crick, alphabet, form));
         }
     } catch (e) {
         console.error(e.message);
