@@ -57,6 +57,7 @@ process.stdin.on("end", async () => {
             } else if (data.includes("\n")) {
                 [watson, crick] = data.split("\n");
             }
+            crick = crick.split("").reverse().join("");
             console.log(await fun(watson, crick, alphabet, form));
         }
     } catch (e) {
