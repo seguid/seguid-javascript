@@ -2,7 +2,7 @@ const rotate = (s, n) => {
     return s.slice(n) + s.slice(0, n);
 };
 
-const SEGUID = async (seq) => {
+const SEGUID = async (seq, urlsafe = false) => {
     const encoder = new TextEncoder();
     const data = encoder.encode(seq.toUpperCase());
     try {
@@ -12,10 +12,13 @@ const SEGUID = async (seq) => {
             .map((b) => String.fromCharCode(b))
             .join("");
         const encodedHash = btoa(hashString);
-        return encodedHash
-            .replace(/\n|=/g, "")
-            .replace(/\+/g, "-")
-            .replace(/\//g, "_");
+        if (urlsafe) {
+            return encodedHash
+                .replace(/\+/g, "-")
+                .replace(/\//g, "_")
+                .replace(/=/g, "");
+        }
+        return encodedHash.replace(/=/g, "");
     } catch (error) {
         console.error("Error calculating SHA-1 hash:", error);
         return null;
@@ -89,6 +92,9 @@ const expand_alphabet = (alphabet) => {
 };
 
 const check_set = (seq, alphabet) => {
+    if (seq.length === 0) {
+        return false;
+    }
     alphabet = new Set(Array.from(expand_alphabet(alphabet)).map((s) => s[0]));
     for (let i = 0; i < seq.length; i++) {
         if (!alphabet.has(seq[i])) {
@@ -100,6 +106,9 @@ const check_set = (seq, alphabet) => {
 
 const check_complementary = (watson, crick, alphabet) => {
     alphabet = expand_alphabet(alphabet);
+    if (watson.length === 0) {
+        return false;
+    }
     if (watson.length !== crick.length) {
         return false;
     }
@@ -120,11 +129,19 @@ const apply_form = (s, short_form) => {
     }
 };
 
+const seguid = async (s, alphabet = "{DNA}", short_form = false) => {
+    const seguid = await SEGUID(s);
+    return apply_form("seguid=" + seguid, short_form);
+};
+
 const lsseguid = async (s, alphabet = "{DNA}", short_form = false) => {
+    if (s.length === 0) {
+        throw new Error("Invalid sequence");
+    }
     if (!check_set(s, alphabet)) {
         throw new Error("Invalid sequence");
     }
-    const seguid = await SEGUID(s);
+    const seguid = await SEGUID(s, true);
     return apply_form("lsseguid=" + seguid, short_form);
 };
 
@@ -142,7 +159,7 @@ const ldseguid = async (
     } else {
         spec = crick + ";" + watson;
     }
-    const seguid = await SEGUID(spec);
+    const seguid = await SEGUID(spec, true);
     return apply_form("ldseguid=" + seguid, short_form);
 };
 
@@ -150,7 +167,7 @@ const csseguid = async (s, alphabet = "{DNA}", short_form = false) => {
     if (!check_set(s, alphabet)) {
         throw new Error("Invalid sequence");
     }
-    const seguid = await SEGUID(minRotation(s));
+    const seguid = await SEGUID(minRotation(s), true);
     return apply_form("csseguid=" + seguid, short_form);
 };
 
@@ -171,11 +188,12 @@ const cdseguid = async (
         spec = mcrick + ";" + rotate(watson, -idxcrick);
     }
 
-    const seguid = await SEGUID(spec);
+    const seguid = await SEGUID(spec, true);
     return apply_form("cdseguid=" + seguid, short_form);
 };
 
 module.exports = {
+    seguid,
     lsseguid,
     ldseguid,
     csseguid,

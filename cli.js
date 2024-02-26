@@ -1,5 +1,5 @@
 const { ArgumentParser } = require("argparse");
-const { lsseguid, ldseguid, csseguid, cdseguid } = require("./seguid");
+const { seguid, lsseguid, ldseguid, csseguid, cdseguid } = require("./seguid");
 
 const parser = new ArgumentParser({
     description: "Calculate SEGUID checksums",
@@ -12,11 +12,16 @@ parser.add_argument("--alphabet", {
 parser.add_argument("--type", {
     type: "str",
     nargs: "?",
+    default: "seguid",
     help: "Type of checksum to calculate",
 });
 parser.add_argument("--short-form", {
     help: "computes a short form of the checksum",
     action: "store_true",
+});
+parser.add_argument("--version", {
+    action: "version",
+    version: "0.0.1",
 });
 
 const args = parser.parse_args();
@@ -24,6 +29,7 @@ const alphabet = args.alphabet || "{DNA}";
 const short_form = args.short_form || false;
 const type = args.type;
 const fun = {
+    seguid: seguid,
     lsseguid: lsseguid,
     ldseguid: ldseguid,
     csseguid: csseguid,
@@ -37,8 +43,8 @@ process.stdin.on("data", (chunk) => {
 
 process.stdin.on("end", async () => {
     try {
-        data = data.trim();
-        if (type === "lsseguid" || type === "csseguid") {
+        data = data.replace(/\n$/, "");
+        if (type === "seguid" || type === "lsseguid" || type === "csseguid") {
             console.log(await fun(data, alphabet, short_form));
         }
         if (type === "ldseguid" || type === "cdseguid") {
@@ -51,5 +57,6 @@ process.stdin.on("end", async () => {
         }
     } catch (e) {
         console.error(e.message);
+        process.exit(1);
     }
 });
