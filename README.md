@@ -8,6 +8,12 @@ Install with
 npm install
 ```
 
+Run with
+
+```
+npx seguid
+```
+
 Run tests with 
 
 ```
