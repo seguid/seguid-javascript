@@ -8,8 +8,8 @@ Install with
 npm install
 ```
 
-Run with 
+Run tests with 
 
 ```
-node cli.js --type ldseguid <<< "GATTACA;TGTAATC"
+make
 ```
