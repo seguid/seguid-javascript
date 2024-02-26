@@ -57,13 +57,13 @@ process.stdin.on("end", async () => {
             if (data.includes(";")) {
                 [watson, crick] = data.split(";");
             } else if (data.includes("\n")) {
-                crick = crick.split("").reverse().join("");
                 [watson, crick] = data.split("\n");
+                crick = crick.split("").reverse().join("");
             }
             console.log(await fun(watson, crick, alphabet, form));
         }
     } catch (e) {
-        console.error(e.message);
+        console.error(e);
         process.exit(1);
     }
 });
