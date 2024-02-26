@@ -14,6 +14,7 @@ install: seguid.js cli.js package.json
 # Check CLI using 'seguid-tests' test suite
 #---------------------------------------------------------------
 seguid-tests:
+	cd seguid-tests && git pull
 	git submodule init
 	git submodule update
 
