@@ -15,7 +15,7 @@ jobs:
       
       matrix:
 #        node-version: [ 16, 18, 20 ]
-        node-version: [ 18 ]
+        node-version: [ 20 ]
         
 
     steps:
