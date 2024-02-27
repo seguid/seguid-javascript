@@ -54,7 +54,8 @@ const minRotation = (s, return_index = false) => {
 ALPHABETS = {
     "{DNA}": "GC,AT",
     "{RNA}": "GC,AU",
-    "{IUPAC}": "GC,AT,BV,DH,KM,SS,RY,WW,NN",
+    "{DNA-IUPAC}": "GC,AT,BV,DH,KM,SS,RY,WW,NN",
+    "{RNA-IUPAC}": "GC,AU,BV,DH,KM,SS,RY,WW,NN",
     "{protein}": "A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,-",
 };
 
