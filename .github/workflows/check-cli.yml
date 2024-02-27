@@ -28,8 +28,9 @@ jobs:
         cache: 'npm'
         
     - name: Session information
-      run: node --version
-      run: npm --version
+      run: |
+        node --version
+        npm --version
 
     - name: Install package
       run: |
