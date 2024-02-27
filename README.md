@@ -21,3 +21,9 @@ Run tests with
 ```
 make
 ```
+
+
+## Requirements
+
+ * Node.js (>= 19)
+ 
