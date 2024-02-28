@@ -54,10 +54,10 @@ const minRotation = (s, return_index = false) => {
 ALPHABETS = {
     "{DNA}": "GC,AT",
     "{RNA}": "GC,AU",
-    "{DNA-IUPAC}": "GC,AT,BV,DH,KM,SS,RY,WW,NN",
-    "{RNA-IUPAC}": "GC,AU,BV,DH,KM,SS,RY,WW,NN",
+    "{DNA-extended}": "GC,AT,BV,DH,KM,SS,RY,WW,NN",
+    "{RNA-extended}": "GC,AU,BV,DH,KM,SS,RY,WW,NN",
     "{protein}": "A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y",
-    "{protein-IUPAC}": "A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,B,J,X,Z"
+    "{protein-extended}": "A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,O,U,B,J,X,Z"
 };
 
 const expand_alphabet = (alphabet) => {
