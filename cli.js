@@ -4,7 +4,7 @@ const { ArgumentParser } = require("argparse");
 const { seguid, lsseguid, ldseguid, csseguid, cdseguid } = require("./seguid");
 
 const parser = new ArgumentParser({
-    description: "Calculate SEGUID checksums",
+    description: "seguid: Sequence Globally Unique Identifier (SEGUID) Checksums for Linear, Circular, Single- and Double-Stranded Biological Sequences",
 });
 parser.add_argument("--alphabet", {
     type: "str",
