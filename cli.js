@@ -2,9 +2,11 @@
 
 const { ArgumentParser } = require("argparse");
 const { seguid, lsseguid, ldseguid, csseguid, cdseguid } = require("./seguid");
+var pjson = require("./package.json");
 
 const parser = new ArgumentParser({
-    description: "seguid: Sequence Globally Unique Identifier (SEGUID) Checksums for Linear, Circular, Single- and Double-Stranded Biological Sequences",
+    description:
+        "seguid: Sequence Globally Unique Identifier (SEGUID) Checksums for Linear, Circular, Single- and Double-Stranded Biological Sequences",
 });
 parser.add_argument("--alphabet", {
     type: "str",
@@ -27,7 +29,7 @@ parser.add_argument("--form", {
 });
 parser.add_argument("--version", {
     action: "version",
-    version: "0.0.1",
+    version: pjson.version,
 });
 
 const args = parser.parse_args();
