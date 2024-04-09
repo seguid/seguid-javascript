@@ -1,4 +1,4 @@
-[![CLI check](https://github.com/seguid/seguid-javascript/actions/workflows/check-cli.yml/badge.svg)](https://github.com/seguid/seguid-javascript/actions/workflows/check-cli.yml)
+[![seguid-tests](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml/badge.svg)](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml)
 
 # seguid-javascript
 
