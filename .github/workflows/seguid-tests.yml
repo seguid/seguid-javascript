@@ -39,3 +39,7 @@ jobs:
     - name: Check CLI
       if: runner.os != 'Windows'
       run: make check-cli
+
+    - name: Check API
+      if: runner.os != 'Windows'
+      run: make check-api

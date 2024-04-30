@@ -11,6 +11,9 @@
     "url": "git+https://github.com/seguid/seguid-javascript.git"
   },
   "author": "Louis Abraham",
+  "contributors": [
+    "Henrik Bengtsson"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/seguid/seguid-javascript/issues"
