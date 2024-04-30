@@ -61,6 +61,10 @@ ALPHABETS = {
 };
 
 const expand_alphabet = (alphabet) => {
+    if (alphabet.length === 0) {
+        throw new Error("Alphabet must not be empty");
+    }
+    
     for (let key in ALPHABETS) {
         alphabet = alphabet.replace(key, ALPHABETS[key]);
     }
@@ -90,6 +94,7 @@ const expand_alphabet = (alphabet) => {
             alphabet.add("-" + s[0]);
         }
     }
+
     return alphabet;
 };
 

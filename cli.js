@@ -33,7 +33,7 @@ parser.add_argument("--version", {
 });
 
 const args = parser.parse_args();
-const alphabet = args.alphabet || "{DNA}";
+const alphabet = args.alphabet;
 const form = args.form;
 const type = args.type;
 const fun = {
