@@ -22,6 +22,9 @@ seguid-tests:
 	cd seguid-tests && git pull origin main
 
 check-cli: seguid-tests install
-	$(MAKE) -C seguid-tests check-cli CLI_CALL="npx seguid"
+	$(MAKE) -C "$<" check-cli/seguid-javascript
+
+check-api: seguid-tests
+	$(MAKE) -C "$<" check-api/seguid-javascript
 
 .PHONY: seguid-tests
