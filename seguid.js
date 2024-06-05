@@ -194,11 +194,13 @@ const cdseguid = async (watson, crick, alphabet = "{DNA}", form = "long") => {
     return apply_form("cdseguid=" + seguid, form);
 };
 
-module.exports = {
-    seguid,
-    lsseguid,
-    ldseguid,
-    csseguid,
-    cdseguid,
-    SEGUID,
-};
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        seguid,
+        lsseguid,
+        ldseguid,
+        csseguid,
+        cdseguid,
+        SEGUID,
+    };
+}
