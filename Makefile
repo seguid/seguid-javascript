@@ -1,6 +1,6 @@
 SHELL=bash
 
-all: check-cli
+all: check-cli check-api
 
 
 #---------------------------------------------------------------
