@@ -51,7 +51,7 @@ const minRotation = (s, return_index = false) => {
     return s.slice(a, a + N);
 };
 
-ALPHABETS = {
+const ALPHABETS = {
     "{DNA}": "GC,AT",
     "{RNA}": "GC,AU",
     "{DNA-extended}": "GC,AT,BV,DH,KM,SS,RY,WW,NN",
