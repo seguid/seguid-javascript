@@ -1,35 +1,13 @@
 [![seguid-tests](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml/badge.svg)](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml)
+![npm](https://img.shields.io/npm/v/seguid)
 
 # seguid-javascript
 
-# WARNING: This is a work in progress and is not yet ready for use.
-
-Install with
+## Installation
 
 ```
 npm install
 ```
-
-Run with
-
-```
-npx seguid
-```
-
-Run tests with
-
-```
-make
-```
-
-
-## Requirements
-
- * Node.js (>= 19)
-
-
-
-How to use:
 
 web:
 
@@ -57,3 +35,20 @@ cjs:
 import seguid from 'seguid.js';
 await seguid.lsseguid("ACGT");
 ```
+
+## CLI
+
+```
+npx seguid
+```
+
+## Testing
+
+```
+make
+```
+
+
+## Requirements
+
+ * Node.js (>= 19)
