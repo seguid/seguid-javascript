@@ -1,11 +1,14 @@
 [![seguid-tests](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml/badge.svg)](https://github.com/seguid/seguid-javascript/actions/workflows/seguid-tests.yml)
-![npm](https://img.shields.io/npm/v/seguid)
+[![npm](https://img.shields.io/npm/v/seguid)](https://www.npmjs.com/package/seguid)
 
 # seguid-javascript
 
 ## Installation
 
-```
+The **seguid** Javascript package is available from
+[NPM](https://www.npmjs.com/package/seguid) and can be installed as:
+
+```sh
 npm install seguid
 ```
 
@@ -38,13 +41,13 @@ await seguid.lsseguid("ACGT");
 
 ## CLI
 
-```
+```sh
 npx seguid
 ```
 
 ## Testing
 
-```
+```sh
 make
 ```
 
