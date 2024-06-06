@@ -1,6 +1,6 @@
 {
   "name": "seguid",
-  "version": "0.2.0",
+  "version": "0.2.0-9000",
   "description": "Sequence Globally Unique Identifier (SEGUID) Checksums for Linear, Circular, Single- and Double-Stranded Biological Sequences",
   "bin": {
     "seguid": "./cli.js"
@@ -23,7 +23,7 @@
   "author": "Louis Abraham",
   "contributors": [
     "Henrik Bengtsson",
-    "Christopher YOVANOVITCH"
+    "Christopher Yovanovitch"
   ],
   "license": "MIT",
   "bugs": {
