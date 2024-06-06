@@ -1,6 +1,6 @@
 {
   "name": "seguid",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sequence Globally Unique Identifier (SEGUID) Checksums for Linear, Circular, Single- and Double-Stranded Biological Sequences",
   "bin": {
     "seguid": "./cli.js"
@@ -12,7 +12,9 @@
       "require": "./seguid.js"
     }
   },
-  "files": ["./esm.js"],
+  "files": [
+    "./esm.js"
+  ],
   "scripts": {},
   "repository": {
     "type": "git",
