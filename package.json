@@ -5,6 +5,14 @@
   "bin": {
     "seguid": "./cli.js"
   },
+  "main": "seguid.js",
+  "exports": {
+    ".": {
+      "import": "./esm.js",
+      "require": "./seguid.js"
+    }
+  },
+  "files": ["./esm.js"],
   "scripts": {},
   "repository": {
     "type": "git",
@@ -12,7 +20,8 @@
   },
   "author": "Louis Abraham",
   "contributors": [
-    "Henrik Bengtsson"
+    "Henrik Bengtsson",
+    "Christopher YOVANOVITCH"
   ],
   "license": "MIT",
   "bugs": {
