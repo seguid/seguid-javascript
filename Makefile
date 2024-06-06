@@ -18,6 +18,7 @@ add-submodules:
 
 seguid-tests:
 	git submodule init
+	git submodule update
 	cd seguid-tests && git fetch origin && git reset --hard origin/main
 
 check-cli: seguid-tests install
