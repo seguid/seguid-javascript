@@ -12,7 +12,7 @@ The **seguid** Javascript package is available from
 npm install seguid
 ```
 
-web:
+Web browser:
 
 ```js
 <script src="https://rawcdn.githack.com/seguid/seguid-javascript/main/seguid.js"></script>
@@ -25,14 +25,14 @@ web:
 </script>
 ```
 
-esm:
+ECMAScript Modules (esm):
 
 ```js
 import { lsseguid } from 'seguid.js';
 await lsseguid("ACGT");
 ```
 
-cjs:
+CommonJS (cjs):
 
 ```js
 import seguid from 'seguid.js';
